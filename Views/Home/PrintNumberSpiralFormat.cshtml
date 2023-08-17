@@ -1,0 +1,29 @@
+﻿@model PrintNumberSpiralFormatModel
+@{
+    ViewBag.Title = "Print Number into Spiral format";
+}
+
+
+@if (Model.Matrix != null)
+{
+    @for (int i = 0; i < Model.InputNumber; i++)
+    {
+        @for (int j = 0; j < Model.InputNumber; j++)
+        {
+            @string.Format(" {0} ",Model.Matrix[i, j].ToString().PadLeft((Model.InputNumber*Model.InputNumber).ToString().Length,'0'))
+        }
+        <br />
+    }
+    <a asp-action="Index" asp-controller="Home">Back to Exercise page</a>
+}
+else
+{
+    <form asp-action="PrintNumberSpiralFormat" asp-controller="Home" method="post">
+        <p>
+            Enter number: <input asp-for="InputNumber" /> <span style="color:red" asp-validation-for="InputNumber"></span>
+        </p>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </form>
+}

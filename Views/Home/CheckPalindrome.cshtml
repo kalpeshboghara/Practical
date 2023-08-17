@@ -1,0 +1,24 @@
+﻿@model PalindromeModel
+@{
+    ViewBag.Title = "Check Palindrome";
+}
+
+
+@if (Model.ShowResult)
+{
+    <p>
+      @Model.OutputString
+    </p>
+    <a asp-action="Index" asp-controller="Home">Back to Exercise page</a>
+}
+else
+{
+    <form asp-action="CheckPalindrome" asp-controller="Home" method="post">
+        <p>
+            Enter number: <input type="number" asp-for="InputNumber" /> <span style="color:red" asp-validation-for="InputNumber"></span>
+        </p>
+        <p>
+            <input type="submit" value="Check" />
+        </p>
+    </form>
+}

@@ -1,0 +1,24 @@
+﻿@model ConvertNumberToStringModel
+@{
+    ViewBag.Title = "Convert Number To String";
+}
+
+
+@if (!string.IsNullOrEmpty(Model.OutputString))
+{
+    <p>
+        @Model.OutputString
+    </p>
+    <a asp-action="Index" asp-controller="Home">Back to Exercise page</a>
+}
+else
+{
+    <form asp-action="ConvertNumberToString" asp-controller="Home" method="post">
+        <p>
+            Enter number: <input asp-for="InputNumber" /> <span style="color:red" asp-validation-for="InputNumber"></span>
+        </p>
+        <p>
+            <input type="submit" value="Convert" />
+        </p>
+    </form>
+}
